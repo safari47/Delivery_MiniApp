@@ -1,3 +1,4 @@
+import os
 from typing import Annotated, List
 
 from aiogram.types import Update
@@ -26,7 +27,9 @@ from .schemas import BaseOrder, Customer, DeliveryDate, OrderItems, OrdersIn, Pr
 
 router = APIRouter()
 
-templates = Jinja2Templates(directory="templates/page")
+templates = Jinja2Templates(
+    directory=os.path.join(os.path.dirname(__file__), "../..", "templates", "page")
+)
 
 
 @router.get(

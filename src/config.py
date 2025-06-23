@@ -37,7 +37,13 @@ class Settings(BaseSettings):
     @property
     def bot_photo(self) -> str:
         """Возвращает URL фотографии бота"""
-        return f"{(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "templates","static", "Image", "start_bot.jpg"))}"
+        return os.path.join(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+            "templates",
+            "static",
+            "Image",
+            "start_bot.jpg",
+        )
 
 
 # Получаем параметры настроек

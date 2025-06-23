@@ -1,4 +1,5 @@
 import logging
+import os
 from contextlib import asynccontextmanager
 
 import uvicorn
@@ -39,7 +40,16 @@ app = FastAPI(title="Оптовая продажа овощей", lifespan=lifes
 # Отключаем логирование для статических файлов
 logging.getLogger("uvicorn.access").disabled = True
 # Инициализация статики
-app.mount("/static", StaticFiles(directory="templates/static"), name="static")
+app.mount(
+    "/static",
+    StaticFiles(
+        directory=os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), "..", "templates/static"
+        )
+    ),
+    name="static",
+)
+
 # Регистрация маршрутов
 app.include_router(router)
 
