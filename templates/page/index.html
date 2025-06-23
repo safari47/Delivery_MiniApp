@@ -1,0 +1,89 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Доставка овощей</title>
+
+</head>
+<link rel="stylesheet" type="text/css" href="/static/style.css">
+
+<body>
+    <div id="preloader" class="spinner">
+        <div class="spinner-icon">
+        </div>
+    </div>
+
+    <div id="content" style="display: none;">
+        <div class="nav-panel">
+            <div class="user-info">
+                <img src="" alt="Аватар пользователя" class="user-avatar" width="30" height="30">
+                <span id="userName"></span>
+            </div>
+            <button onclick="order_history()" id="HistoryButton" class="H-checkout-button">История заказов</button>
+        </div>
+
+        <div class="container" id="peeled">
+            <h2>Чищенные овощи</h2>
+            <div class="product-grid" id="peeledGrid"></div>
+        </div>
+
+        <div class="container" id="unpeeled">
+            <h2>Нечищенные овощи</h2>
+            <div class="product-grid" id="unpeeledGrid"></div>
+        </div>
+
+        <button class="cart-button">
+            Корзина
+        </button>
+
+        <div id="cartModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeCartModal()">&times;</span>
+                <h2>Ваша корзина</h2>
+                <div id="cartItems"></div>
+                <h4> Дата доставки </h4>
+                <input type="date" id="date_order">
+                <h4> Наименование организации </h4>
+                <input type="text" id="organization_name" placeholder="Введите название организации ..."
+                    oninput="filterOrganization()" onkeydown="handleKeyDown(event)" list="organization_list">
+                <datalist id="organization_list"></datalist>
+                <button onclick="success_order()" id="checkoutButton" class="checkout-button">Оформить заказ</button>
+            </div>
+        </div>
+
+        <div id="historyModal" class="modalHistory">
+            <div class="modal-content">
+                <span class="close" onclick="closeHistoryModal()">&times;</span>
+                <h2>История заказов</h2>
+                <div id="historyContent"></div>
+            </div>
+        </div>
+
+        <div id="loading-bar-spinner" class="spinner" style="display: none;">
+            <div class="spinner-icon"></div>
+        </div>
+
+        <div id="successMdl" class="successMdl">
+            <div class="successMdl-header">
+                Заявка успешно оформлена!
+            </div>
+            <div class="successMdl-content">
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                </svg>
+                <div class="order-number">
+                    Номер вашей заявки: <span id="orderNumber"></span>
+                </div>
+                <p>Спасибо за ваш заказ! Мы уже начали подготовку ваших овощей!</p>
+                <button onclick="closeModal()" class="close-btn">Закрыть</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+
+</html>

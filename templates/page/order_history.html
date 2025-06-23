@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История заявок</title>
+    <link rel="stylesheet" type="text/css" href="/static/style_order.css">
+
+</head>
+<body>
+    <div id="app" class="container">
+        <h1>История заказов овощей</h1>
+        <div class="date-picker">
+            <label for="order-date">Выберите дату:</label>
+            <input type="date" id="order-date">
+        </div>
+        <button class="search-button" onclick="fetchOrders()">Поиск</button>
+        <div id="orders-container"></div>
+        <div id="no-orders" style="display: none;">
+            На выбранную дату заказов нет.
+        </div>
+    </div>
+    <script src="/static/script_order.js"></script>
+</body>
+</html>
