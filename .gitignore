@@ -21,7 +21,7 @@ session.txt
 intercom/
 
 # Игнорирование текстовых файлов
-*.txt
+# *.txt
 
 # Игнорирование базы данных SQLite
 *sqlite3

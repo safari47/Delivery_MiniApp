@@ -12,11 +12,6 @@ from database.database import create_tables
 from database.utils import initialize_category, initialize_product
 from delivery.router import router
 
-from .logging import setup_logging
-
-# Настройка логирования
-setup_logging()
-
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
