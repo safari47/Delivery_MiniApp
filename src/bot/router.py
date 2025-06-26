@@ -12,11 +12,10 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 from loguru import logger
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from config import bot, settings
-from database.dao_class import UserDAO
-
-from .keyboards import main_kb
-from .models import TelegramIDModel, UserModel
+from src.bot.keyboards import main_kb
+from src.bot.models import TelegramIDModel, UserModel
+from src.config import bot, settings
+from src.database.dao_class import UserDAO
 
 router = Router()
 

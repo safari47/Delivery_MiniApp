@@ -2,7 +2,7 @@ from pydantic import BaseModel, ConfigDict
 from sqlalchemy import BigInteger, String
 from sqlalchemy.orm import Mapped, mapped_column
 
-from database.database import Base
+from src.database.database import Base
 
 
 class User(Base):

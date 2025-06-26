@@ -496,19 +496,28 @@ function closeCartModal() {
 function filterOrganization() {
     const input = document.getElementById('organization_name');
     const dataList = document.getElementById('organization_list');
-    const query = input.value.toLowerCase();
+    const query = input.value.toLowerCase().trim();
 
     // Очищаем предыдущие результаты
     dataList.innerHTML = '';
 
-    // Фильтруем элементы и добавляем их в datalist
-    const filteredItems = items.filter(item => item.toLowerCase().includes(query));
+    // Разбиваем запрос на слова и фильтруем элементы, чтобы все слова встречались в названии
+    const words = query.split(/\s+/).filter(Boolean);
+
+    const filteredItems = items.filter(item => {
+        // Приводим название организации к нижнему регистру
+        const lowerCaseItem = item.toLowerCase();
+        return words.every(word => lowerCaseItem.includes(word));
+    });
+
+    // Добавляем совпадения в datalist
     filteredItems.forEach(item => {
         const option = document.createElement('option');
-        option.value = item; // Сохраняем оригинальный регистр
+        option.value = item;
         dataList.appendChild(option);
     });
 }
+
 
 // Обрабатывает нажатие клавиши Enter
 function handleKeyDown(event) {

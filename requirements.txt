@@ -8,3 +8,4 @@ aiosqlite
 loguru
 redis
 jinja2
+asyncpg

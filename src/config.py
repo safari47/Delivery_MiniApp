@@ -16,8 +16,14 @@ class Settings(BaseSettings):
     ADMIN_IDS: List[int]  # ID администратора
     CHANNEL_ID: str  # ID канала для публикаций
     BASE_URL: str  # Базовый URL для бота
-    DB_URL: str  # URL базы данных
-    REDIS_URL: str  # URL Redis для кэширования
+    REDIS_HOST: str  # Хост Redis
+    REDIS_PORT: int  # Порт Redis
+    REDIS_DB: int  # Номер базы данных Redis
+    POSTGRES_HOST: str  # Хост PostgreSQL
+    POSTGRES_PORT: int  # Порт PostgreSQL
+    POSTGRES_USER: str  # Пользователь PostgreSQL
+    POSTGRES_PASSWORD: str  # Пароль PostgreSQL
+    POSTGRES_DB: str  # Имя базы данных PostgreSQL
 
     FORMAT_LOG: str = (
         "{time:YYYY-MM-DD в HH:mm:ss} | {level} | {message}"  # Формат лога
@@ -33,6 +39,11 @@ class Settings(BaseSettings):
     def hook_url(self) -> str:
         """Возвращает URL вебхука"""
         return f"{self.BASE_URL}/bot"
+
+    @property
+    def db_url(self) -> str:
+        """Возвращает URL базы данных"""
+        return f"postgresql+asyncpg://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}@{self.POSTGRES_HOST}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
 
     @property
     def bot_photo(self) -> str:

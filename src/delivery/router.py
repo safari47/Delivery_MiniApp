@@ -17,10 +17,10 @@ from loguru import logger
 from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from bot.bot import bot, dp
-from bot.router import send_message_to_channel
-from bot.utils import generate_message
-from database.dao_class import OrderItemsDAO, OrdersDAO, ProductDAO
+from src.bot.bot import bot, dp
+from src.bot.router import send_message_to_channel
+from src.bot.utils import generate_message
+from src.database.dao_class import OrderItemsDAO, OrdersDAO, ProductDAO
 
 from .dependencies import get_redis, get_session_with_commit, get_session_without_commit
 from .schemas import BaseOrder, Customer, DeliveryDate, OrderItems, OrdersIn, ProductOut
@@ -94,11 +94,18 @@ async def get_products(
     Returns:
         JSONResponse: Список продуктов в формате JSON.
     """
-    organization_name = await redis.get(f"{user_id}")
+    organization_name = await redis.get(name=user_id)
     products = await ProductDAO().find_all(session=session)
-    products_list = [ProductOut.model_validate(product).model_dump() for product in products]
+    products_list = [
+        ProductOut.model_validate(product).model_dump() for product in products
+    ]
     return JSONResponse(
-        content={"products": products_list, "organization": organization_name}
+        content={
+            "products": products_list,
+            "organization": (
+                organization_name.decode("utf-8") if organization_name else None
+            ),
+        }
     )
 
 

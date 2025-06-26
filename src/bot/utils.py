@@ -1,4 +1,4 @@
-from delivery.schemas import OrdersIn
+from src.delivery.schemas import OrdersIn
 
 
 def generate_message(orders: OrdersIn) -> str:

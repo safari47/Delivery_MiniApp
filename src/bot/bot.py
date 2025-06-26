@@ -1,9 +1,8 @@
 from aiogram.types import BotCommand, BotCommandScopeDefault
 from loguru import logger
 
-from config import bot, dp
-
-from .router import router as user_router
+from src.bot.router import router as user_router
+from src.config import bot, dp
 
 
 # Функция, которая настроит командное меню (дефолтное для всех пользователей)

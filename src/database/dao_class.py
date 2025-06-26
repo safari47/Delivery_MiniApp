@@ -7,7 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 from sqlalchemy.orm import joinedload
 
-from bot.models import User
+from src.bot.models import User
 
 from .dao import BaseDAO
 from .models import Category, OrderItems, Orders, Product

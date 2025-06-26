@@ -1,8 +1,7 @@
 from loguru import logger
 from pydantic import BaseModel
 
-from database.dao_class import CategoryDAO, ProductDAO
-
+from .dao_class import CategoryDAO, ProductDAO
 from .database import async_session_maker
 
 
@@ -47,7 +46,7 @@ async def initialize_category(category=categories_data)-> None:
         else:
             await CategoryDAO().add_many(session=session, values=category)
             await session.commit()
-        
+
 async def initialize_product(product=products_data)-> None:
     async with async_session_maker() as session:
         #Проверяем, существуют ли продукты

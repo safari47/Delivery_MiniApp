@@ -1,7 +1,7 @@
 from aiogram.types import WebAppInfo
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
-from config import settings
+from src.config import settings
 
 
 def main_kb(user_id):

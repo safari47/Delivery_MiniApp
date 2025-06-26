@@ -7,11 +7,12 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from loguru import logger
 
-from bot.bot import start_bot
-from config import bot, dp, settings
-from database.database import create_tables
-from database.utils import initialize_category, initialize_product
-from delivery.router import router
+from src.bot.bot import start_bot
+from src.database.database import create_tables
+from src.database.utils import initialize_category, initialize_product
+from src.delivery.router import router
+
+from .config import bot, dp, settings
 
 
 @asynccontextmanager

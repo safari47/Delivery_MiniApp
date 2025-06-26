@@ -3,8 +3,8 @@ from typing import AsyncGenerator
 from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from config import settings
-from database.database import async_session_maker
+from src.config import settings
+from src.database.database import async_session_maker
 
 
 async def get_session_with_commit() -> AsyncGenerator[AsyncSession, None]:
@@ -33,7 +33,9 @@ async def get_session_without_commit() -> AsyncGenerator[AsyncSession, None]:
 
 async def get_redis() -> AsyncGenerator[Redis, None]:
     """Асинхронный Redis клиент."""
-    redis = Redis.from_url(settings.REDIS_URL, decode_responses=True)
+    redis = Redis(
+        host=settings.REDIS_HOST, port=settings.REDIS_PORT, db=settings.REDIS_DB
+    )
     try:
         yield redis
     finally:
