@@ -18,11 +18,11 @@
 - Логирование: **Loguru**  
 - Верстка и фронтенд: **HTML, CSS, JS**
 
-<img src="/templates/static/Image/IMG_7571.JPG" width="600" style="display: block; margin: auto;">
-<img src="/templates/static/Image/IMG_7572.JPG" width="600" style="display: block; margin: auto;">
-<img src="/templates/static/Image/IMG_7573.JPG" width="600" style="display: block; margin: auto;">
-<img src="/templates/static/Image/IMG_7574.JPG" width="600" style="display: block; margin: auto;">
-<img src="/templates/static/Image/IMG_7575.JPG" width="600" style="display: block; margin: auto;">
+<img src="/templates/static/Image/IMG_7571.JPG" width="300" style="display: block; margin: auto;">
+<img src="/templates/static/Image/IMG_7572.JPG" width="300" style="display: block; margin: auto;">
+<img src="/templates/static/Image/IMG_7573.JPG" width="300" style="display: block; margin: auto;">
+<img src="/templates/static/Image/IMG_7574.JPG" width="300" style="display: block; margin: auto;">
+<img src="/templates/static/Image/IMG_7575.JPG" width="300" style="display: block; margin: auto;">
 
 ## 🛠️ Установка и запуск
 1. Клонируйте репозиторий:
